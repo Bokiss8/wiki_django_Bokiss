@@ -1,0 +1,26 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block nav %}
+
+<br>
+Останні результати пошуку:
+<ul>
+    {% for element in kysok_search_rezult %}
+        <li><a href="{% url 'wiki:wpages' element %}">{{ element }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+{% block body %}
+    
+    {{ vmist|safe }}
+    <form action="{% url 'wiki:correctpage' title %}">
+        {% csrf_token %}
+        <input type="submit" value="Редагувати">
+        </form>
+
+{% endblock %}

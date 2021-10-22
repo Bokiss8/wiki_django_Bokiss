@@ -1,0 +1,25 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Correct page
+{% endblock %}
+
+{% block body %}
+<h1>Редагувати статтю</h1>
+<br>
+<form action="{% url 'wiki:correctpagesave' %}" method="post">
+{% csrf_token %}
+<h6 style="color:red;">{{ error }}</h6>
+<label>Назва статті: </label>
+<br>
+<input type="text" name="Bokiss" size="50" value="{{title}}" disabled>
+<input type="hidden" name="articlecor2" size="50" value="{{title}}" > 
+<br>
+<label for="markcor">Редагувати зміст статті:</label>
+<br>
+<textarea id="markcor" name="markcor" style="width:1300px; height:600px;">{{ corzmist }}</textarea>
+<br>
+<input type="submit" value="Зберегти">
+</form>
+
+{% endblock %}

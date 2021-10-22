@@ -1,0 +1,28 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create page
+{% endblock %}
+
+{% block body %}
+<h1>Створити нову статтю</h1>
+<br>
+<form action="{% url 'wiki:createpage' %}" method="post">
+{% csrf_token %}
+<h6 style="color:red;">{{ error }}</h6>
+<label>Придумати назву статті: </label>
+<br>
+<input type="text" name="article" size="50"> 
+<br>
+<label for="mark">Тут буде зміст статті(нижче приклад заповнення у форматі Markdown):</label>
+<br>
+<textarea id="mark" name="mark" style="width:1300px; height:600px;">
+# CSS
+
+CSS is a language that can be used to add style to an [HTML](/wiki/HTML) page.
+</textarea>
+<br>
+<input type="submit" value="Зберегти">
+</form>
+
+{% endblock %}
